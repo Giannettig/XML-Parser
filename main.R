@@ -39,6 +39,9 @@ parseXML<-function(endpoint,args=NULL){
 data1<-parseXML(query1)%>% mutate_all( function(x){x<-as.character(x)})
 data2<-parseXML(query2)%>% mutate_all( function(x){x<-as.character(x)})
 
+data1<-data1[!duplicated(data1$ID),]
+data2<-data2[!duplicated(data2$ID),]
+
 #Providers<-data.table::rbindlist(data2$PROVIDER,fill = TRUE)
 
 ###Export the data
